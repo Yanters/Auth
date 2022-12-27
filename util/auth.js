@@ -9,17 +9,15 @@ const authenticate = async (mode, email, password) => {
     returnSecureToken: true,
   });
 
-  console.log(response.data);
+  const token = response.data.idToken;
 
-  return response;
+  return token;
 };
 
-export const createUser = async (email, password) => {
-  const response = await authenticate('signUp', email, password);
-  return response;
+export const createUser = (email, password) => {
+  return authenticate('signUp', email, password);
 };
 
-export const loginUser = async (email, password) => {
-  const response = await authenticate('signInWithPassword', email, password);
-  return response;
+export const loginUser = (email, password) => {
+  return authenticate('signInWithPassword', email, password);
 };
